@@ -3,7 +3,7 @@ Investment Signals Analyzer - Phase 6: Insight Generation
 Generates investment signals, red flags, and green flags
 """
 from typing import Dict, Any, List
-from app.services.gemini_client import gemini_client
+from app.services.llm_client import llm_client
 from app.utils.logging import get_logger
 
 logger = get_logger(__name__)
@@ -72,7 +72,7 @@ Be specific and data-driven in your analysis.
                 extracted_data=data_summary
             )
             
-            analysis = await gemini_client.generate_json(prompt)
+            analysis = await llm_client.generate_json(prompt)
             
             return {
                 "document_id": extracted_info["document_id"],

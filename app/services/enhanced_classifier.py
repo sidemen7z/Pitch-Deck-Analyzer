@@ -1,9 +1,9 @@
 """
 Enhanced Content Classifier - Phase 4: Section Classification & Labeling
-Uses Gemini 2.0 for zero-shot classification with structured output
+Uses LLM (Gemini or Ollama) for zero-shot classification with structured output
 """
 from typing import List, Dict, Any
-from app.services.gemini_client import gemini_client
+from app.services.llm_client import llm_client
 from app.utils.logging import get_logger
 
 logger = get_logger(__name__)
@@ -88,7 +88,7 @@ Respond with JSON in this EXACT format:
                 slides_content=slides_content[:8000]  # Limit total
             )
             
-            response = await gemini_client.generate_json(prompt)
+            response = await llm_client.generate_json(prompt)
             
             # Add document metadata
             response["document_id"] = parsed_doc["document_id"]

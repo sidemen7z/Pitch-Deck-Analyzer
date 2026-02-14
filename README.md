@@ -5,12 +5,14 @@ AI-powered NLP system that automatically extracts and structures key investment 
 ## Features
 
 - Document parsing (PDF and PowerPoint)
-- Content classification
-- Information extraction
-- Summarization
-- Confidence scoring
-- Structured output (JSON and CSV)
+- Content classification with 11 categories
+- Field-level information extraction with confidence scoring
+- Investment signals generation (green/red/yellow flags)
+- Risk assessment and recommendations
+- **Local LLM support with Ollama** (run completely offline!)
 - Web dashboard for visualization
+- MongoDB Atlas integration
+- Real-time processing pipeline
 
 ## Setup
 
@@ -58,10 +60,23 @@ Once running, visit:
 ## Configuration
 
 Key environment variables:
-- `GEMINI_API_KEY`: Your Gemini API key
+- `LLM_PROVIDER`: Choose "gemini" or "ollama" (default: gemini)
+- `GEMINI_API_KEY`: Your Gemini API key (if using Gemini)
+- `OLLAMA_URL`: Ollama server URL (if using local LLM)
+- `OLLAMA_MODEL`: Model name like "llama3.1:8b" (if using Ollama)
 - `MONGODB_URL`: MongoDB Atlas connection string
 - `REDIS_URL`: Redis connection string
 - `MAX_FILE_SIZE_MB`: Maximum upload file size (default: 50MB)
+
+## Local LLM Setup
+
+Want to run completely offline? See [OLLAMA_SETUP.md](OLLAMA_SETUP.md) for instructions on using local LLMs with Ollama.
+
+Benefits:
+- ✅ Complete privacy - data never leaves your machine
+- ✅ No API costs
+- ✅ Works offline
+- ✅ Fast processing with GPU acceleration
 
 ## Testing
 

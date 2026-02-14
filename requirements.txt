@@ -21,6 +21,7 @@ opencv-python==4.9.0.80
 # LLM Integration
 google-generativeai==0.3.2
 openai==1.12.0
+httpx==0.26.0
 
 # Vector Store & Embeddings
 faiss-cpu==1.7.4

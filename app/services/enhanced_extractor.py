@@ -3,7 +3,7 @@ Enhanced Information Extractor - Phase 5: Field-Level Structured Extraction
 Section-specific prompts with confidence scoring and traceability
 """
 from typing import Dict, Any, List
-from app.services.gemini_client import gemini_client
+from app.services.llm_client import llm_client
 from app.utils.logging import get_logger
 from datetime import datetime
 
@@ -116,7 +116,7 @@ IMPORTANT:
                 section_map=section_map_str
             )
             
-            extracted_data = await gemini_client.generate_json(prompt)
+            extracted_data = await llm_client.generate_json(prompt)
             
             # Calculate overall confidence
             confidence_scores = []

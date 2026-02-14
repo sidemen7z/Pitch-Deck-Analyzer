@@ -5,7 +5,7 @@ import os
 import aiofiles
 
 from app.services.document_parser import DocumentParser
-from app.services.processor import DocumentProcessor
+from app.services.enhanced_processor import EnhancedDocumentProcessor
 from app.models.database import Document as DBDocument, ExtractedData
 from app.models.schemas import ProcessingStatus
 from app.utils.logging import AuditLogger, get_logger
@@ -17,7 +17,7 @@ logger = get_logger(__name__)
 
 @router.post("/upload")
 async def upload_document(background_tasks: BackgroundTasks, file: UploadFile = File(...)):
-    """Upload a pitch deck for processing"""
+    """Upload a pitch deck for processing with enhanced pipeline"""
     try:
         # Read file content
         content = await file.read()
@@ -52,16 +52,17 @@ async def upload_document(background_tasks: BackgroundTasks, file: UploadFile = 
             "size": file_size
         })
         
-        # Start background processing
-        background_tasks.add_task(DocumentProcessor.process_document, document_id, file_path)
+        # Start enhanced background processing
+        background_tasks.add_task(EnhancedDocumentProcessor.process_document, document_id, file_path)
         
-        logger.info(f"Document uploaded: {document_id}")
+        logger.info(f"Document uploaded: {document_id} - Enhanced pipeline queued")
         
         return {
             "document_id": document_id,
             "filename": file.filename,
             "status": ProcessingStatus.QUEUED.value,
-            "message": "Document uploaded successfully and queued for processing"
+            "message": "Document uploaded successfully and queued for enhanced processing",
+            "pipeline": "7-phase-accuracy-first"
         }
     
     except HTTPException:

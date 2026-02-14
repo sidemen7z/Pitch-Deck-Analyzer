@@ -16,7 +16,7 @@ class GeminiClient:
     
     def __init__(self):
         # Use the correct model name for the current API version
-        self.model = genai.GenerativeModel('gemini-1.5-pro-latest')
+        self.model = genai.GenerativeModel('gemini-2.0-flash-exp')
     
     async def generate_content(self, prompt: str, temperature: float = 0.7) -> str:
         """Generate content using Gemini"""

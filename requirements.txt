@@ -9,15 +9,26 @@ motor==3.3.2
 pymongo==4.6.1
 beanie==1.24.0
 
-# Document Processing
-PyPDF2==3.0.1
-pdfplumber==0.10.3
+# Document Processing - Enhanced Stack
+PyMuPDF==1.23.8
 python-pptx==0.6.23
 pytesseract==0.3.10
 Pillow==10.2.0
+camelot-py[cv]==0.11.0
+tabula-py==2.9.0
+opencv-python==4.9.0.80
 
-# LLM Integration - Gemini
+# LLM Integration
 google-generativeai==0.3.2
+openai==1.12.0
+
+# Vector Store & Embeddings
+faiss-cpu==1.7.4
+sentence-transformers==2.3.1
+
+# Text Processing
+rapidfuzz==3.6.1
+spacy==3.7.2
 
 # Background Tasks
 celery==5.3.6
@@ -33,3 +44,4 @@ python-dotenv==1.0.0
 python-multipart==0.0.6
 aiofiles==23.2.1
 jsonschema==4.20.0
+numpy==1.26.3
